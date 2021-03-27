@@ -216,7 +216,8 @@ public class Converter {
     }
 
     public boolean validateFromAndTo(String toValidate) {
-        Matcher m = Pattern.compile("\\s*\\/\\s*").matcher(toValidate);
+        toValidate = toValidate.replace(" ", "");
+        Matcher m = Pattern.compile("[\\*|\\/]{1,1}").matcher(toValidate);
         ArrayList<String> elements = new ArrayList<>();
         int pos;
         for (pos = 0; m.find(); pos = m.end()) {
